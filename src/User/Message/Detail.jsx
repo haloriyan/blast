@@ -142,7 +142,13 @@ const HistoryDetail = () => {
                                 <div className="bg-slate-400 w-5/12 aspect-square rounded-xl p-8" style={{
                                     backgroundImage: `url(/wa-bg.jpg)`,
                                 }}>
-                                    <div className="bg-white rounded-lg p-4" dangerouslySetInnerHTML={{__html: showPreview(replaceVar(broadcast.content))}}></div>
+                                    <div className="bg-white rounded-lg p-4">
+                                        {
+                                            broadcast.image !== null &&
+                                            <img src={`${config.baseUrl}/storage/bc_images/${broadcast.image}`} alt={broadcast.id} className="w-full rounded-lg aspect-square object-cover mb-2" />
+                                        }
+                                        <div dangerouslySetInnerHTML={{__html: showPreview(replaceVar(broadcast.content))}}></div>
+                                    </div>
                                 </div>
                             }
                         </div>

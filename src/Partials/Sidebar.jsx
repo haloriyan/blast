@@ -16,7 +16,7 @@ const Sidebar = ({active = 'send'}) => {
                     !isMobile &&
                     <div className="flex items-center gap-4 p-2 mb-4">
                         <div className="flex grow">
-                            <AppIcon />
+                            <AppIcon size={'40px'} />
                         </div>
                         <div className="cursor-pointer" onClick={() => setExpanded(false)}>
                             <MdOutlineSkipPrevious />

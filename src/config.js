@@ -1,7 +1,7 @@
 const config = {
-    baseUrl: 'http://127.0.0.1:8000',
-    // baseUrl: 'https://blaster-api.haloriyan.dev',
-    whatsappUrl: 'https://wangsaf.haloriyan.dev',
+    // baseUrl: 'http://127.0.0.1:8000',
+    baseUrl: 'https://broadcast-api.zainzo.com',
+    whatsappUrl: 'https://whatsapp.zainzo.com',
     // whatsappUrl: 'http://127.0.0.1:2024',
     primaryColor: "#198754",
     google_client_id: "448841353104-2jnn7p65maru7frsgmrttae2s8tb9lea.apps.googleusercontent.com",

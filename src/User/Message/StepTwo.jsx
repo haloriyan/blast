@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { IconBold, IconItalic, IconStrikethrough } from "@tabler/icons-react";
+import { IconBold, IconItalic, IconStrikethrough, IconX } from "@tabler/icons-react";
 
 const StepTwo = ({fields, changeFields, setStep, step}) => {
     const [ableToNext, setAbleToNext] = useState(false);
@@ -61,16 +61,32 @@ const StepTwo = ({fields, changeFields, setStep, step}) => {
             <div className="w-6/12 mt-4 flex flex-col gap-2">
                 <div className="text-sm text-slate-600">Sisipkan Gambar :</div>
                 <input type="file" ref={inputRef} name="image" className="hidden" onChange={e => {
-                    changeFields({
-                        image: e.currentTarget.files[0],
+                    let file = e.currentTarget.files[0];
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.addEventListener('load', evt => {
+                        changeFields({
+                            image: file,
+                            image_base64: reader.result,
+                        })
                     })
                 }} />
-                <div className={`flex flex-row`}>
+                <div className={`flex flex-row grow`}>
                     {
-                        fields.image === null &&
+                        fields.image === null ?
                         <button className="rounded-lg p-2 px-4 bg-primary text-primary bg-opacity-25 text-sm" onClick={() => inputRef.current.click()}>
                             Pilih Gambar
                         </button>
+                        :
+                        <div className="flex items-center gap-4 grow">
+                            <img src={fields.image_base64} className="h-16 aspect-square rounded-lg object-cover" />
+                            <div className="flex grow text-sm">{fields.image.name}</div>
+                            <div className="cursor-pointer text-red-500" onClick={() => changeFields({
+                                image: null, image_base64: null,
+                            })}>
+                                <IconX />
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

@@ -80,6 +80,10 @@ const MessageCreate = () => {
         formData.append('delay_time', fields.delay_time);
         formData.append('delivery_time', fields.delivery_time);
 
+        if (fields.image != null) {
+            formData.append('image', fields.image);
+        }
+
         axios.post(`${config.baseUrl}/api/broadcast/send`, formData)
         .then(response => {
             let res = response.data;

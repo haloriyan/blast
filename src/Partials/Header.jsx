@@ -68,7 +68,7 @@ const Header = ({title = "Dashboard"}) => {
 
     return (
         <>
-            <div className={`fixed top-0 right-0 w-9/12 ${isExpanded ? '' : 'w-11/12'} mobile:w-full pt-4 pe-4 mobile:ps-4 z-40`}>
+            <div className={`fixed top-0 right-0 w-9/12 ${isExpanded ? '' : 'w-11/12'} mobile:w-full pt-4 pe-4 mobile:ps-4 z-10`}>
                 <div className="bg-white shadow-[0px_16px_32px_rgba(0,0,0,0.05)] h-16 rounded-lg flex items-center gap-4 px-8">
                     <div className="text-xl mobile:text-lg font-bold text-slate-700 flex grow">Zainzo Blast</div>
                     <div className="flex gap-2 items-center">

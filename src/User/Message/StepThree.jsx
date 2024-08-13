@@ -46,7 +46,13 @@ const StepThree = ({fields, changeFields, setStep, step, submit}) => {
             <div className="bg-slate-400 w-5/12 aspect-square rounded-xl p-8" style={{
                 backgroundImage: `url(/wa-bg.jpg)`,
             }}>
-                <div className="bg-white rounded-lg p-4" dangerouslySetInnerHTML={{__html: showPreview(replaceVar(fields.content))}}></div>
+                <div className="bg-white rounded-lg p-4">
+                    {
+                        fields.image !== null &&
+                        <img src={fields.image_base64} className="w-full aspect-square rounded-lg object-cover mb-2" />
+                    }
+                    <div dangerouslySetInnerHTML={{__html: showPreview(replaceVar(fields.content))}}></div>
+                </div>
             </div>
             <div className="flex flex-col grow">
                 <div className="flex flex-row content-center items-center gap-4 border-b">
