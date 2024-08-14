@@ -6,6 +6,7 @@ import config from "../config";
 import { IconPlus, IconTrash, IconX } from "@tabler/icons-react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useSidebar } from "../Providers/SidebarProvider";
+import { Link } from "react-router-dom";
 
 const Devices = () => {
     const user = JSON.parse(window.localStorage.getItem('user_data'));
@@ -19,6 +20,7 @@ const Devices = () => {
     const [qrData, setQrData] = useState(false);
     const [isLoadingQr, setLoadingQr] = useState(false);
 
+    const [canAdd, setCanAdd] = useState(false);
     const [isAdding, setAdding] = useState(false);
     const [isDeleting, setDeleting] = useState(false);
     const [isDeletingProc, setDeletingProc] = useState(false);
@@ -34,6 +36,7 @@ const Devices = () => {
                 setLoading(false);
                 setRaw(res.devices);
                 setDevices(res.devices);
+                setCanAdd(res.can_add);
             })
         }
     }, [isLoading, triggerLoading, user]);
@@ -86,14 +89,19 @@ const Devices = () => {
                 <div className="bg-white shadow-[0px_16px_32px_rgba(0,0,0,0.05)] p-8 px-8 rounded-lg mt-8">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="text-xl font-bold flex grow">Daftar Perangkat</div>
-                        <button className="bg-green-100 text-green-500 p-2 px-4 rounded-lg flex gap-2 items-center text-sm" onClick={() => {
-                            setAdding(true);
-                            setLoadingQr(true);
-                            setQrData(null);
-                        }}>
-                            <IconPlus />
-                            Tambahkan Perangkat
-                        </button>
+                        {
+                            canAdd ?
+                            <button className="bg-green-100 text-green-500 p-2 px-4 rounded-lg flex gap-2 items-center text-sm" onClick={() => {
+                                setAdding(true);
+                                setLoadingQr(true);
+                                setQrData(null);
+                            }}>
+                                <IconPlus />
+                                Tambahkan Perangkat
+                            </button>
+                            :
+                            <Link to={'/upgrade'} className="text-primary text-sm underline">Upgrade untuk Menambahkan Perangkat</Link>
+                        }
                     </div>
 
                     {

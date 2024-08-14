@@ -17,6 +17,7 @@ import HistoryDetail from "./User/Message/Detail";
 import UserMiddleware from "./middleware/User";
 import Logout from "./User/Logout";
 import AdminRouter from "./Admin";
+import Purchase from "./User/Purchase";
 
 const App = () => {
 	return (
@@ -37,7 +38,9 @@ const App = () => {
 				<Route path="/group/:id" element={<UserMiddleware><Group /></UserMiddleware>} />
 				<Route path="/history" element={<UserMiddleware><Message /></UserMiddleware>} />
 				<Route path="/history/:id/detail" element={<UserMiddleware><HistoryDetail /></UserMiddleware>} />
+				
 				<Route path="/upgrade" element={<UserMiddleware><Upgrade /></UserMiddleware>} />
+				<Route path="/purchase" element={<UserMiddleware><Purchase /></UserMiddleware>} />
 			</Routes>
 
 			<AdminRouter />

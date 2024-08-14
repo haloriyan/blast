@@ -50,7 +50,7 @@ const Sidebar = ({active = 'send'}) => {
                 </Link>
                 {
                     window.screen.width > 480 &&
-                    <Link to={'/upgrade-calendar'} className={`flex items-center gap-4 p-4 rounded-2xl mobile:rounded-full ${active === "upgrade-calendar" ? "bg-white bg-opacity-25" : ""}`}>
+                    <Link to={'/purchase'} className={`flex items-center gap-4 p-4 rounded-2xl mobile:rounded-full ${active === "purchase" ? "bg-white bg-opacity-25" : ""}`}>
                         <IconCalendar size={24} />
                         { isExpanded && <div className="font-bold mobile:hidden">Riwayat</div>}
                     </Link>
